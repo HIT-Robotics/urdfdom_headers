@@ -7,19 +7,21 @@
 
 #include "urdf_model/pose.h"
 #include "urdf_model/types.h"
-namespace urdf
-{
+namespace urdf {
 
-class Constraint
-{
+class Constraint {
 public:
-
   Constraint() { this->clear(); };
 
   std::string name;
-  enum
-  {
-    UNKNOWN, REVOLUTE, PRISMATIC, UNIVERSAL, SPHERICAL, PLANAR, LINK
+  enum {
+    UNKNOWN,
+    REVOLUTE,
+    PRISMATIC,
+    UNIVERSAL,
+    SPHERICAL,
+    PLANAR,
+    LINK
   } type;
 
   /// \brief     type_       cut element
@@ -31,25 +33,27 @@ public:
   ///            SPHERICAL   spherical joint
   ///            PLANAR      planar joint
   ///            LINK        link
-  
-  /// two joint axis to represent joints with more than one fixed axes, e.g. universal joints
+
+  /// two joint axis to represent joints with more than one fixed axes, e.g.
+  /// universal joints
   Vector3 parent_axis;
   Vector3 child_axis;
 
   /// child Link element
-  ///   child_origin specifies the transform from Parent Link to Constraint child Frame
+  ///   child_origin specifies the transform from Parent Link to Constraint
+  ///   child Frame
   std::string child_link_name;
   /// transform from Parent Link frame to Constraint child frame
-  Pose  child_to_constraint_origin_transform;
+  Pose child_to_constraint_child_transform;
 
   /// parent Link element
-  ///   parent_origin specifies the transform from Parent Link to Constraint parent Frame
+  ///   parent_origin specifies the transform from Parent Link to Constraint
+  ///   parent Frame
   std::string parent_link_name;
   /// transform from Parent Link frame to Constraint parent frame
-  Pose  parent_to_constraint_origin_transform;
+  Pose parent_to_constraint_parent_transform;
 
-  void clear()
-  {
+  void clear() {
     this->parent_axis.clear();
     this->child_axis.clear();
     this->child_link_name.clear();
@@ -60,5 +64,5 @@ public:
   };
 };
 
-}
+} // namespace urdf
 #endif // URDF_INTERFACE_CONSTRAINT_H
