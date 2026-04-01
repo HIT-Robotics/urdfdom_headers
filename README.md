@@ -19,7 +19,6 @@ This repository is a **custom fork** of the standard `urdfdom_headers`. It adds 
   - `PRISMATIC`: Prismatic joint constraint
   - `UNIVERSAL`: Universal joint constraint
   - `SPHERICAL`: Spherical joint constraint
-  - `PLANAR`: Planar joint constraint
   - `LINK`: Link constraint
   - *(Additional types may be added in future updates)*
 
