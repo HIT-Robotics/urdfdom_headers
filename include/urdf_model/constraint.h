@@ -20,7 +20,6 @@ public:
     PRISMATIC,
     UNIVERSAL,
     SPHERICAL,
-    PLANAR,
     LINK
   } type;
 
@@ -31,7 +30,6 @@ public:
   ///            PRISMATIC   prismatic joint
   ///            UNIVERSAL   universal joint
   ///            SPHERICAL   spherical joint
-  ///            PLANAR      planar joint
   ///            LINK        link
 
   /// two joint axis to represent joints with more than one fixed axes, e.g.
