@@ -68,6 +68,8 @@ URDF_TYPEDEF_CLASS_POINTER(Sphere);
 URDF_TYPEDEF_CLASS_POINTER(Visual);
 URDF_TYPEDEF_CLASS_POINTER(Constraint);
 
+URDF_TYPEDEF_CLASS_POINTER(ModelInterface);
+
 // create *_pointer_cast functions in urdf namespace
 template<class T, class U>
 std::shared_ptr<T> const_pointer_cast(std::shared_ptr<U> const & r)
