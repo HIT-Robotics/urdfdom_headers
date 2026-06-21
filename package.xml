@@ -8,6 +8,7 @@
   </description>
   <maintainer email="scpeters@openrobotics.org">Steve Peters</maintainer>
   <maintainer email="steven@openrobotics.org">Steven! Ragnarök</maintainer>
+  <maintainer email="sai.kishor@pal-robotics.com">Sai Kishor Kothakota</maintainer>
   <license>BSD</license>
 
   <url type="website">http://ros.org/wiki/urdf</url>
