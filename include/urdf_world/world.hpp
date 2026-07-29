@@ -1,13 +1,13 @@
 /*********************************************************************
 * Software License Agreement (BSD License)
-*
+* 
 *  Copyright (c) 2008, Willow Garage, Inc.
 *  All rights reserved.
-*
+* 
 *  Redistribution and use in source and binary forms, with or without
 *  modification, are permitted provided that the following conditions
 *  are met:
-*
+* 
 *   * Redistributions of source code must retain the above copyright
 *     notice, this list of conditions and the following disclaimer.
 *   * Redistributions in binary form must reproduce the above
@@ -17,7 +17,7 @@
 *   * Neither the name of the Willow Garage nor the names of its
 *     contributors may be used to endorse or promote products derived
 *     from this software without specific prior written permission.
-*
+* 
 *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
@@ -32,9 +32,77 @@
 *  POSSIBILITY OF SUCH DAMAGE.
 *********************************************************************/
 
-#ifndef URDF_INTERFACE_POSE_H
-#define URDF_INTERFACE_POSE_H
+/* Author: John Hsu */
 
-#include <urdf_model/pose.hpp>
+/* encapsulates components in a world
+   see http://ros.org/wiki/usdf/XML/urdf_world
+   for details
+*/
+/* example world XML
+
+<world name="pr2_with_table">
+  <!-- include the models by including
+       either the complete urdf or
+       referencing the file name.  -->
+  <model name="pr2">
+    ...
+  </model>
+  <include filename="table.urdf" model_name="table_model"/>
+
+  <!-- models in the world -->
+  <entity model="pr2" name="prj">
+    <origin xyz="0 1 0" rpy="0 0 0"/>
+    <twist linear="0 0 0" angular="0 0 0"/>
+  </entity>
+  <entity model="pr2" name="prk">
+    <origin xyz="0 2 0" rpy="0 0 0"/>
+    <twist linear="0 0 0" angular="0 0 0"/>
+  </entity>
+  <entity model="table_model">
+    <origin xyz="0 3 0" rpy="0 0 0"/>
+    <twist linear="0 0 0" angular="0 0 0"/>
+  </entity>
+
+</world>
+
+*/
+
+#ifndef URDF_WORLD_HPP
+#define URDF_WORLD_HPP
+
+#include <string>
+#include <vector>
+#include <map>
+
+#include "urdf_model/types.hpp"
+#include "urdf_model/pose.hpp"
+#include "urdf_model/twist.hpp"
+
+namespace urdf{
+
+class Entity
+{
+public:
+  ModelInterfaceSharedPtr model;
+  Pose origin;
+  Twist twist;
+};
+
+class World
+{
+public:
+  World() { this->clear(); };
+
+  /// world name must be unique
+  std::string name;
+
+  std::vector<Entity> models;
+
+  void clear()
+  {
+    this->name.clear();
+  };
+};
+}
 
 #endif

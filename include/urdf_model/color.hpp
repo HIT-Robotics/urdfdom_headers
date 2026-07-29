@@ -32,9 +32,74 @@
 *  POSSIBILITY OF SUCH DAMAGE.
 *********************************************************************/
 
-#ifndef URDF_INTERFACE_POSE_H
-#define URDF_INTERFACE_POSE_H
+/* Author: Josh Faust */
 
-#include <urdf_model/pose.hpp>
+#ifndef URDF_INTERFACE_COLOR_HPP
+#define URDF_INTERFACE_COLOR_HPP
+
+#include <stdexcept>
+#include <string>
+#include <vector>
+#include <math.h>
+
+#include <urdf_model/utils.hpp>
+#include <urdf_exception/exception.hpp>
+
+namespace urdf
+{
+
+class Color
+{
+public:
+  Color() {this->clear();};
+  float r;
+  float g;
+  float b;
+  float a;
+
+  void clear()
+  {
+    r = g = b = 0.0f;
+    a = 1.0f;
+  }
+  bool init(const std::string &vector_str)
+  {
+    this->clear();
+    std::vector<std::string> pieces;
+    std::vector<float> rgba;
+    urdf::split_string( pieces, vector_str, " ");
+    for (unsigned int i = 0; i < pieces.size(); ++i)
+    {
+      if (!pieces[i].empty())
+      {
+        try
+        {
+          double piece = strToDouble(pieces[i].c_str());
+          if ((piece < 0) || (piece > 1))
+            throw ParseError("Component [" + pieces[i] + "] is outside the valid range for colors [0, 1]");
+          rgba.push_back(static_cast<float>(piece));
+        }
+        catch (std::runtime_error &/*e*/) {
+          throw ParseError("Unable to parse component [" + pieces[i] + "] to a double (while parsing a color value)");
+        }
+      }
+    }
+
+    if (rgba.size() != 4)
+    {
+      return false;
+    }
+
+    this->r = rgba[0];
+    this->g = rgba[1];
+    this->b = rgba[2];
+    this->a = rgba[3];
+
+    return true;
+  };
+};
+
+}
 
 #endif
+

@@ -32,9 +32,21 @@
 *  POSSIBILITY OF SUCH DAMAGE.
 *********************************************************************/
 
-#ifndef URDF_INTERFACE_POSE_H
-#define URDF_INTERFACE_POSE_H
+/* Author: Steve Peters */
 
-#include <urdf_model/pose.hpp>
+#ifndef URDF_SENSOR_TYPES_HPP
+#define URDF_SENSOR_TYPES_HPP
+
+#include <memory>
+
+
+namespace urdf{
+
+class VisualSensor;
+
+// typedef shared pointers
+typedef std::shared_ptr<VisualSensor> VisualSensorSharedPtr;
+
+}
 
 #endif

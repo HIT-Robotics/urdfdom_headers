@@ -1,13 +1,13 @@
 /*********************************************************************
 * Software License Agreement (BSD License)
-*
+* 
 *  Copyright (c) 2008, Willow Garage, Inc.
 *  All rights reserved.
-*
+* 
 *  Redistribution and use in source and binary forms, with or without
 *  modification, are permitted provided that the following conditions
 *  are met:
-*
+* 
 *   * Redistributions of source code must retain the above copyright
 *     notice, this list of conditions and the following disclaimer.
 *   * Redistributions in binary form must reproduce the above
@@ -17,7 +17,7 @@
 *   * Neither the name of the Willow Garage nor the names of its
 *     contributors may be used to endorse or promote products derived
 *     from this software without specific prior written permission.
-*
+* 
 *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
@@ -32,9 +32,37 @@
 *  POSSIBILITY OF SUCH DAMAGE.
 *********************************************************************/
 
-#ifndef URDF_INTERFACE_POSE_H
-#define URDF_INTERFACE_POSE_H
+/* Author: John Hsu */
 
+#ifndef URDF_TWIST_HPP
+#define URDF_TWIST_HPP
+
+#include <string>
+#include <sstream>
+#include <vector>
+#include <math.h>
 #include <urdf_model/pose.hpp>
 
+namespace urdf{
+
+
+class Twist
+{
+public:
+  Twist() { this->clear(); };
+
+  Vector3  linear;
+  // Angular velocity represented by Euler angles
+  Vector3  angular;
+
+  void clear()
+  {
+    this->linear.clear();
+    this->angular.clear();
+  };
+};
+
+}
+
 #endif
+
