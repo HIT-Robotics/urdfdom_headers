@@ -2,17 +2,22 @@
 Changelog for package urdfdom_headers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+3.0.1 (2026-07-30)
+------------------
+* Move the headers from .h to .hpp (`#100 <https://github.com/ros/urdfdom_headers/issues/100>`_)
+* package.xml: add saikishor as maintainer (`#107 <https://github.com/ros/urdfdom_headers/issues/107>`_)
+* package.xml: add scpeters as maintainer (`#106 <https://github.com/ros/urdfdom_headers/issues/106>`_)
+* Contributors: Sai Kishor Kothakota, Steve Peters
+
 3.0.0 (2026-04-20)
------------
+------------------
 * Update lower, upper, effort, and velocity default joint limits (`#95 <https://github.com/ros/urdfdom_headers/issues/95>`_)
 * Clean up declaration of ModelInterface's SharedPtrs (`#99 <https://github.com/ros/urdfdom_headers/issues/99>`_)
 * Extend ``JointLimits`` class to include acceleration, deceleration and jerk limits (`#83 <https://github.com/ros/urdfdom_headers/issues/83>`_)
-
 * Contributors: Aarav Gupta, Alejandro Hernández Cordero, Robert Haschke, Sai Kishor Kothakota
 
-
 2.1.2 (2026-04-18)
------------
+------------------
 * Revert "Extend JointLimits class to include acceleration, deceleration and jerk limits (`#83 <https://github.com/ros/urdfdom_headers/issues/83>`_)"
   This was a breaking change that will be released in 3.0.0
 * Contributors: Steve Peters
